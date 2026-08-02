@@ -2,7 +2,7 @@
 
 
 
-ServiceNow development and configuration work built on a Personal Developer Instance, by a Logistics/Systems professional transitioning into ITSM and ServiceNow administration.
+This is a ServiceNow development and configuration work built on a Personal Developer Instance, by a Logistics/Systems professional transitioning into ITSM and ServiceNow administration.
 
 
 
