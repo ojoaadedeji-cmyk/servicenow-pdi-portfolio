@@ -3,7 +3,7 @@
 Documenting my progression through the ServiceNow Administration Fundamentals (SNAF) course, module by module.
 
 ## Modules
-- [ ] [Module 1: The Modernized Work Experience](./snaf-01-modernized-work-experience/README.md)
+- [x] [Module 1: The Modernized Work Experience](./snaf-01-modernized-work-experience/README.md)
 - [ ] [Module 2: Explore the Power of the ServiceNow Platform](./snaf-02-power-of-platform/README.md)
 - [ ] [Module 3: Configure Applications for Business](./snaf-03-configure-applications/README.md)
 - [ ] [Module 4: Manage Data](./snaf-04-manage-data/README.md)
