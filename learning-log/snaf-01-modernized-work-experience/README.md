@@ -14,7 +14,7 @@ Fictitious company: Cloud Dimensions, implementing ServiceNow to support IT and 
 
 
 
-\*\*IT Context:\*\* The IT department is piloting a new device (Infinity Holographic Handheld Device, "Infinity HHD") for 3D onsite repair instruction videos, supported by the Training Technology team. The IT Product Owner needs a way to track incidents and questions during and after the pilot, in order to:
+\*\*IT Context:\*\* the IT department is piloting a new device (Infinity Holographic Handheld Device, "Infinity HHD") for 3D onsite repair instruction videos, supported by the Training Technology team. The IT Product Owner needs a way to track incidents and questions during and after the pilot, in order to:
 
 \- Identify areas for improvement in the HHD training program
 
@@ -28,7 +28,7 @@ Fictitious company: Cloud Dimensions, implementing ServiceNow to support IT and 
 
 
 
-\*\*HR Context:\*\* The HR department wants to explore the HR Case Management application's capabilities and what installing/configuring it would involve.
+\*\*HR Context:\*\* the HR department wants to explore the HR Case Management application's capabilities and what installing/configuring it would involve.
 
 
 
@@ -60,7 +60,7 @@ This scenario is the throughline for labs across the whole course, not just Modu
 
 
 
-\*\*Concept Reinforced:\*\* Roles are additive; access is granted by role membership and can be revoked instantly.
+\*\*Concept reinforced:\*\* Roles are additive; access is granted by role membership and can be revoked instantly.
 
 
 
@@ -88,5 +88,5 @@ Logged in as an end user and checked incident status via the Employee Center sel
 
 \- ServiceNow's platform spans multiple "views" of the same incident data: classic UI, Service Operations Workspace, and the Employee Center self-service portal
 
-\- Access control (roles) is the first gate before any of these views become usable to a given user
+\- Access control (roles) is the first gate before any of these views become usable to a given user.
 
