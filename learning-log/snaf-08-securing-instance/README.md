@@ -13,10 +13,22 @@ No numbered lab is listed for this section; only the conceptual coverage of the 
 ### Section 8.2: ServiceNow Security Center
 **User story:** As an administrator, the ServiceNow Security Center needs to be navigated with ease to improve security and compliance in the Now Platform, monitoring for security-related actions and behaviors across instances.
 
-**8.2.1: Exploring Security Center**
-- Viewed the Security Center Overview Dashboard
-- Changed a Hardening setting
-- Modified a selection in Best Practices
+- ### 8.2.1: Exploring Security Center
+
+**Objective:** Navigate the ServiceNow Security Center to improve security and compliance in the Now Platform, focusing on non-compliant hardening settings and understanding their impact on the overall compliance score.
+
+**Steps Taken:**
+1. Explored the Hardening compliance score and its breakdown, focusing on the Non-Compliant Settings list
+
+![Hardening overview showing 90% score and next actionable setting](./screenshots/8.2.1-hardening-score-before.png)
+
+2. Reviewed the Score Impact column to understand how much each setting would raise the overall score if made compliant
+3. Configured two hardening settings from the non-compliant list: "Enforce Current Password Policy Compliance Requirements on Login" and "Minimize Session Activity Timeout Duration"
+4. Verified the Hardening compliance score increased from 89% to 90% as a result, with both settings now reflected under Compliant Settings
+
+![Compliant settings list showing both configured settings](./screenshots/8.2.1-compliant-settings-after.png)
+
+**Concept Reinforced:** The Security Center quantifies security posture as a single score but breaks it down into individually actionable settings, each with its own Score Impact, so remediation can be prioritized by what moves the score the most rather than by addressing settings randomly.
 
 ## Key Concepts Reinforced
 - The Shared Responsibility Model draws a clear line between what ServiceNow secures at the platform level and what the customer, as data owner, is responsible for
