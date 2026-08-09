@@ -20,7 +20,7 @@ No numbered lab is listed for this section; only the conceptual coverage of the 
 **Steps Taken:**
 1. Explored the Hardening compliance score and its breakdown, focusing on the Non-Compliant Settings list
 
-![Hardening overview showing 90% score and next actionable setting](./screenshots/8.2.1-hardening-score-before.png)
+![Hardening overview showing 90% score and next actionable setting](./screenshots/8.2.1-hardening-score-after.png)
 
 2. Reviewed the Score Impact column to understand how much each setting would raise the overall score if made compliant
 3. Configured two hardening settings from the non-compliant list: "Enforce Current Password Policy Compliance Requirements on Login" and "Minimize Session Activity Timeout Duration"
