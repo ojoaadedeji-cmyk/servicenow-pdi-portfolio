@@ -68,7 +68,7 @@ Verify that the Business Rule escalates an Incident when the caller is marked as
 
 **Test data:**
 
-Short description: `VIP caller escalation test`
+Short description: VIP caller escalation test
 
 Caller: VIP user
 
@@ -98,7 +98,7 @@ Verify that the Business Rule does not escalate an Incident when the caller is n
 
 **Test data:**
 
-Short description: `Non VIP caller escalation test`
+Short description: Non VIP caller escalation test
 
 Caller: Non VIP user
 
