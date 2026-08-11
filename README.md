@@ -16,7 +16,13 @@ Implemented and tested a Before Business Rule that automatically escalates Incid
 
 ### Client Scripts
 
-Projects to be added.
+### Client Scripts and UI Policies
+
+#### [Hardware Incident CI Enforcement](projects/client-scripts/hardware-incident-ci-enforcement/)
+
+Configured dynamic Incident form behaviour using a UI Policy, UI Policy Action, and onChange Client Script. Hardware incidents require an affected Configuration Item and provide contextual guidance, while non-Hardware incidents retain the standard optional behaviour.
+
+**Skills demonstrated:** UI Policies, UI Policy Actions, Client Scripts, GlideForm, conditional form behaviour, Configuration Items, Incident Management, native form validation, and functional testing.
 
 ### Flow Designer
 
