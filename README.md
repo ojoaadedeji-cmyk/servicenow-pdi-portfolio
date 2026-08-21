@@ -24,6 +24,16 @@ Configured dynamic Incident form behaviour using a UI Policy, UI Policy Action, 
 
 **Skills demonstrated:** UI Policies, UI Policy Actions, Client Scripts, GlideForm, conditional form behaviour, Configuration Items, Incident Management, native form validation, and functional testing.
 
+### End-to-End ServiceNow Solutions
+
+#### [Strategic Investment Governance Application](projects/strategic-investment-governance/)
+
+Designed and implemented an end-to-end investment governance application that supports strategic proposal submission, weighted evaluation, controlled governance decisions, role-based access, automated decision auditing, and portfolio analytics.
+
+The solution uses a defined **Draft → Submitted → Under Review → Approved / Deferred / Rejected** lifecycle, automated weighted scoring, a minimum approval score threshold, controlled requestor submission, governance validation, and interactive reporting.
+
+**Skills demonstrated:** ServiceNow administration, custom tables and fields, Business Rules, server-side scripting, UI Actions, ACLs, role-based access control, reference fields, Strategic Priorities, governance workflow design, automated scoring, Platform Analytics, reporting, dashboard development, troubleshooting, and user acceptance testing.
+
 ### Flow Designer
 
 Projects to be added.
