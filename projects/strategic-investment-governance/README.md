@@ -48,13 +48,21 @@ The application was designed around the following functional and technical requi
    Separate requestor and governance reviewer responsibilities so that requestors can manage proposal information but only authorised reviewers can control governance decisions.
 
 6. **Controlled Proposal Submission**  
-   Provide requestors with a controlled mechanism for submitting Draft proposals for governance review without granting them direct write access to Governance Status.
+   Provide requestors with a controlled mechanism to submit Draft proposals for governance review without granting them direct write access to Governance Status.
 
 7. **Decision Controls and Auditability**  
    Require Decision Comments when a proposal is Deferred or Rejected, and automatically record who made the final governance decision and when.
 
 8. **Portfolio Reporting and Analytics**  
    Provide reports and an interactive dashboard showing proposal volumes, governance status, evaluation performance, costs, expected benefits, and proposal-level governance information.
+
+ ## Solution Process Flow
+
+The following process flow illustrates the end-to-end Investment Proposal lifecycle across the **Requestor**, **Governance Reviewer**, and **System / Automation** responsibilities.
+
+It shows how a proposal progresses from creation and Draft status through controlled submission, governance review, final decision, automated decision capture, and portfolio reporting. The diagram also highlights the automated weighted Evaluation Score calculation and the Approved, Deferred, and Rejected governance outcomes.
+
+![Solution Process Flow Diagram](screenshots/investment-governance-process.png)
 
 ## Application and Data Model
 
@@ -175,8 +183,16 @@ The available governance statuses are:
 | Submitted | Proposal has been submitted for governance consideration |
 | Under Review | Proposal is being assessed by a governance reviewer |
 | Approved | Proposal has received final approval |
-| Deferred | Decision has been postponed or the proposal requires further consideration |
+| Deferred | Decision has been postponed, or the proposal requires further consideration |
 | Rejected | Proposal has not been approved |
+
+### Approval Score Threshold
+
+To strengthen governance control, a proposal can only progress to **Approved** status when its Evaluation Score is at least **350**.
+
+If an approval is attempted with an Evaluation Score below 350, the update is rejected, and the user is informed that the proposal does not meet the minimum approval threshold.
+
+This ensures that the weighted evaluation model is used not only for proposal comparison and reporting, but also as an active control within the governance decision process.
 
 ### Governance Status Transition Control
 
@@ -193,6 +209,16 @@ The permitted transitions are:
 The Business Rule prevents users from bypassing or reversing the governance process. For example, a proposal cannot move directly from **Submitted to Approved**, and a proposal already **Under Review** cannot be moved backwards to **Submitted**.
 
 The rule is configured to run only when the Governance Status changes. This means that normal updates to other proposal fields do not trigger the governance transition validation unnecessarily.
+
+### Governance Transition Business Rule Configuration
+
+The **Validate Governance Status Transition** Business Rule executes before an update when the Governance Status changes. It validates the requested status change against the permitted lifecycle transitions before the record is saved.
+
+![Validate Governance Status Transition Business Rule](screenshots/validate-governance-transition-business-rule.png)
+
+The server-side validation logic prevents proposals from bypassing governance stages or moving backwards through the lifecycle.
+
+![Validate Governance Status Transition Script](screenshots/validate-governance-transition-script.png)
 
 ## Role-Based Access Control
 
@@ -212,6 +238,20 @@ Both functional roles inherit the base application role `u_investment_proposal_u
 Table-level ACLs allow authorised requestors and governance reviewers to read and update Investment Proposal records.
 
 A separate field-level **Write ACL** was configured for `u_investment_proposal.u_governance_status`. Only users with the `investment_governance_reviewer` role are granted direct write access to the Governance Status field.
+
+The following field-level ACL restricts direct write access to Governance Status to users with the `investment_governance_reviewer` role.
+
+![Governance Status Write ACL](screenshots/governance-status-write-acl.png)
+
+The role-based behaviour was also validated using the same Investment Proposal record with different users. For the Proposal Requestor, Governance Status remained read-only, while the Governance Reviewer was able to edit the field.
+
+**Proposal Requestor view:**
+
+![Proposal Requestor Governance Status Access](screenshots/investment-proposal-form.png)
+
+**Governance Reviewer view:**
+
+![Governance Reviewer Governance Status Access](screenshots/governance-reviewer-status-access.png)
 
 As a result:
 
@@ -236,6 +276,16 @@ The button is displayed only when:
 
 - The proposal is currently in Draft status.
 - The logged-in user has the `investment_proposal_requestor` role.
+
+### Submit Proposal UI Action Configuration
+
+The UI Action is configured as an active **Form button** that is available on existing Investment Proposal records when its defined condition is met. It provides requestors with a controlled submission mechanism without making the Governance Status field directly editable.
+
+![Submit Proposal UI Action](screenshots/submit-proposal-ui-action.png)
+
+The condition restricts the action to proposals in Draft status and users with the `investment_proposal_requestor` role. The server-side script then changes the Governance Status to Submitted, saves the record, displays a confirmation message, and redirects the requestor back to the proposal.
+
+![Submit Proposal UI Action Script](screenshots/submit-proposal-ui-action-script.png)
 
 The following condition controls when the button is displayed:
 
@@ -298,11 +348,27 @@ The Business Rule uses the following logic:
 
 Because this is a Before Business Rule, the Decision By and Decision Date values are included in the same database operation that saves the governance status change. No additional `current.update()` is required.
 
+### Governance Decision Business Rule Configuration
+
+The **Record Governance Decision** Business Rule runs before an update when Governance Status changes. It automatically captures governance decision information when a proposal reaches Approved, Deferred, or Rejected status.
+
+![Record Governance Decision Business Rule](screenshots/record-governance-decision-business-rule.png)
+
+The Advanced configuration contains the server-side logic used to populate Decision By and Decision Date.
+
+![Record Governance Decision Script](screenshots/record-governance-decision-script.png)
+
+### Decision Control Validation
+
+The following rejected proposal demonstrates the completed governance decision controls. **Decision Comments** is mandatory for the rejected outcome, while **Decision By** and **Decision Date** have been automatically populated to provide an audit trail.
+
+![Rejected Proposal Decision Audit](screenshots/rejected-proposal-decision-audit.png)
+
 Together, the mandatory Decision Comments control and automated decision audit provide a clearer record of governance outcomes and accountability for final investment decisions.
 
 ## Reporting and Analytics
 
-Reporting and analytics were configured to provide visibility of the investment portfolio and support governance decision making.
+Reporting and analytics were configured to provide visibility of the investment portfolio and support governance decision-making.
 
 ### Core UI Reports
 
@@ -311,11 +377,29 @@ Three reports were created using ServiceNow Core UI reporting:
 1. **Investment Proposals by Governance Status**  
    A bar chart showing the number of proposals at each stage of the governance lifecycle.
 
+#### Investment Proposals by Governance Status
+
+This report provides a count of Investment Proposals grouped by Governance Status, making it easy to see how proposals are distributed across the governance lifecycle.
+
+![Investment Proposals by Governance Status](screenshots/investment-proposals-by-governance-status.png)
+
 2. **Investment Proposal Evaluation Scores**  
    A bar chart comparing the average Evaluation Score by Proposal Title, allowing individual proposals to be compared based on their weighted assessment.
 
+#### Investment Proposal Evaluation Scores
+
+This report compares individual proposals using their Evaluation Scores, providing a clear view of the relative strength of proposals based on the weighted evaluation model.
+
+![Investment Proposal Evaluation Scores](screenshots/investment-proposal-evaluation-scores.png)
+
 3. **Investment Cost vs Expected Benefit**  
    A bubble chart comparing Estimated Cost against Expected Annual Benefit for each proposal, with bubble size representing the Evaluation Score. This provides a three-dimensional view of investment cost, expected financial benefit, and overall evaluation strength.
+
+#### Investment Cost vs Expected Benefit
+
+This bubble report compares **Estimated Cost** against **Expected Annual Benefit** for each proposal, while bubble size represents the **Evaluation Score**. It provides a three-dimensional view of cost, expected financial benefit, and overall evaluation strength.
+
+![Investment Cost vs Expected Benefit](screenshots/investment-cost-vs-expected-benefit.png)
 
 ### Strategic Investment Governance Dashboard
 
@@ -331,6 +415,16 @@ The dashboard contains:
 The Governance Status donut chart and Average Evaluation Score chart were configured with **Apply as filter** interaction. Selecting a value in either visualisation dynamically filters the Governance Review list, allowing governance users to investigate specific segments of the portfolio.
 
 A dashboard guide was also included to explain that Evaluation Scores range from **100 to 500**, with higher scores representing stronger overall investment value.
+
+### Dashboard Implementation
+
+The completed dashboard provides a consolidated governance view of the investment portfolio. It combines proposal volume, lifecycle distribution, average evaluation performance, and proposal-level governance information in a single interactive interface.
+
+![Strategic Investment Governance Dashboard](screenshots/strategic-investment-governance-dashboard.png)
+
+The dashboard was tested with proposals distributed across all six lifecycle statuses: **Draft, Submitted, Under Review, Approved, Deferred, and Rejected**. This provides representative portfolio data for validating both governance visibility and interactive filtering.
+
+Selecting a Governance Status from the donut chart or a status from the Average Evaluation Score visualisation applies the selection as a filter to the Governance Review list, allowing reviewers to focus on specific segments of the investment portfolio.
 
 Together, the reports and dashboard provide both proposal-level and portfolio-level visibility to support investment evaluation, governance monitoring, and decision-making.
 
@@ -369,6 +463,30 @@ An attempted backward transition from **Under Review → Submitted** was success
 The reviewer then approved the proposal using the valid **Under Review → Approved** transition. The application automatically populated **Decision By** and **Decision Date**, confirming that the governance decision audit functionality operated as designed.
 
 Additional proposals were deliberately retained at **Submitted** and **Under Review** stages to verify lifecycle visibility and provide representative portfolio data across the governance dashboard.
+
+### Governance Control Validation
+
+Negative testing was performed to confirm that the application prevents invalid governance actions rather than relying only on users to follow the defined process.
+
+#### Invalid Lifecycle Transition
+
+An attempt was made to move a proposal directly from **Submitted** to **Approved**, bypassing the required **Under Review** stage. The update was rejected by the governance transition validation logic.
+
+![Invalid Governance Transition](screenshots/invalid-governance-transition.png)
+
+#### Approval Score Threshold
+
+A proposal with an Evaluation Score of **260** was tested for approval. The application prevented the approval because the Evaluation Score was below the required minimum threshold of **350**.
+
+![Approval Score Threshold Validation](screenshots/approval-score-threshold-validation.png)
+
+#### Mandatory Decision Comments
+
+A Deferred proposal was tested without entering Decision Comments. The application prevented the record from being saved and identified **Decision Comments** as a mandatory field.
+
+![Mandatory Decision Comments Validation](screenshots/mandatory-decision-comments-validation.png)
+
+These tests demonstrate that governance controls are actively enforced by the application, including lifecycle sequencing, minimum approval criteria, and decision justification requirements.
 
 ## Troubleshooting and Lessons Learned
 
@@ -463,3 +581,21 @@ This project demonstrates practical experience across ServiceNow administration,
 - Cost and expected benefit analysis
 - Portfolio-level reporting and analytics
 
+## Project Outcome
+
+The completed solution demonstrates how ServiceNow can be configured to support a structured and auditable investment governance process.
+
+The application provides:
+
+- Centralised capture of strategic investment proposals.
+- Alignment of proposals with organisational Strategic Priorities.
+- Automated weighted evaluation using strategic, financial, operational, and risk criteria.
+- Controlled progression through a defined governance lifecycle.
+- Separation of requestor and governance reviewer responsibilities through role-based access control.
+- Controlled proposal submission without exposing Governance Status directly to requestors.
+- Automated capture of governance decision accountability.
+- Mandatory justification for Deferred and Rejected decisions.
+- Portfolio-level reporting and interactive analytics.
+- A tested process covering both valid and invalid governance scenarios.
+
+The project combines ServiceNow administration, configuration, server-side scripting, security, reporting, analytics, troubleshooting, and business process design within a single end-to-end implementation.
