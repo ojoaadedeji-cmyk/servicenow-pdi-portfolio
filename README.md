@@ -34,14 +34,6 @@ The solution uses a defined **Draft → Submitted → Under Review → Approved 
 
 **Skills demonstrated:** ServiceNow administration, custom tables and fields, Business Rules, server-side scripting, UI Actions, ACLs, role-based access control, reference fields, Strategic Priorities, governance workflow design, automated scoring, Platform Analytics, reporting, dashboard development, troubleshooting, and user acceptance testing.
 
-### Flow Designer
-
-Projects to be added.
-
-### Script Includes
-
-Projects to be added.
-
 ## Learning Log
 
 My [ServiceNow University Learning Log](learning-log/) documents my progress through ServiceNow Administration Fundamentals, including course concepts, scenarios, labs, and practical learning.
