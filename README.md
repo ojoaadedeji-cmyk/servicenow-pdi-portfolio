@@ -32,6 +32,18 @@ The solution incorporates a **Draft → Submitted → Under Review → Approved 
 
 **Skills demonstrated:** Custom tables and fields, Business Rules, server-side scripting, UI Actions, Access Control Lists (ACLs), role-based access control, reference fields, governance workflow design, automated scoring, Platform Analytics, reporting, dashboard development, troubleshooting, and user acceptance testing.
 
+## Additional ServiceNow Integration Project
+
+### [Microsoft Entra ID Access Management](https://github.com/ojoaadedeji-cmyk/servicenow-entra-id-access-management)
+
+Designed, developed, and tested an automated Identity and Access Management (IAM) solution integrating ServiceNow with Microsoft Entra ID through Microsoft Graph API.
+
+The solution enables users to request and revoke security group access through ServiceNow, incorporating approval workflows, automated provisioning and revocation, error handling, and access governance.
+
+**Skills demonstrated:** ServiceNow Flow Designer, Microsoft Entra ID, Microsoft Graph API, REST API integration, OAuth 2.0, identity and access management, approval workflows, automation, error handling, and functional testing.
+
+**[View Full Project Documentation](https://github.com/ojoaadedeji-cmyk/servicenow-entra-id-access-management)**
+
 ## Technical Competencies
 
 - **Platform Administration:** ServiceNow configuration, user and role management, access controls, and application configuration.
