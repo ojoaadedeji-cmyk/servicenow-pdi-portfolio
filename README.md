@@ -1,52 +1,54 @@
 # My ServiceNow PDI Portfolio
 
-A portfolio of hands-on ServiceNow development, configuration, and administration work completed in a Personal Developer Instance (PDI).
+A portfolio of practical ServiceNow administration, configuration, application development, and automation projects completed in a Personal Developer Instance (PDI).
 
-I am building this portfolio as I transition from systems administration, data analysis, and supply chain operations into IT Service Management and ServiceNow administration.
+These projects demonstrate my technical capabilities in ServiceNow platform administration, IT Service Management (ITSM), scripting, access control, workflow configuration, and solution development.
 
 ## Projects
 
-### Business Rules
+### 1. Business Rules
 
 #### [VIP Incident Escalation](projects/business-rules/vip-incident-escalation/)
 
-Implemented and tested a Before Business Rule that automatically escalates Incidents involving VIP callers by setting Impact and Urgency to High, resulting in Priority 1 Critical.
+Implemented and tested a Before Business Rule that automatically escalates incidents involving VIP callers by setting Impact and Urgency to High, resulting in Priority 1 (Critical).
 
 **Skills demonstrated:** Business Rules, server-side scripting, dot walking, reference fields, Incident Management, priority calculation, and functional testing.
 
-### Client Scripts
-
-### Client Scripts and UI Policies
+### 2. Client Scripts and UI Policies
 
 #### [Hardware Incident CI Enforcement](projects/client-scripts/hardware-incident-ci-enforcement/)
 
-Configured dynamic Incident form behaviour using a UI Policy, UI Policy Action, and onChange Client Script. Hardware incidents require an affected Configuration Item and provide contextual guidance, while non-Hardware incidents retain the standard optional behaviour.
+Configured dynamic Incident form behaviour using a UI Policy, UI Policy Action, and onChange Client Script. Hardware incidents require an affected Configuration Item (CI) and display contextual guidance, while other incidents retain the standard optional behaviour.
 
-**Skills demonstrated:** UI Policies, UI Policy Actions, Client Scripts, GlideForm, conditional form behaviour, Configuration Items, Incident Management, native form validation, and functional testing.
+**Skills demonstrated:** UI Policies, UI Policy Actions, Client Scripts, GlideForm, conditional form behaviour, Configuration Items, Incident Management, form validation, and functional testing.
 
-### End-to-End ServiceNow Solutions
+### 3. ServiceNow Application Development
 
 #### [Strategic Investment Governance Application](projects/strategic-investment-governance/)
 
-Designed and implemented an end-to-end investment governance application that supports strategic proposal submission, weighted evaluation, controlled governance decisions, role-based access, automated decision auditing, and portfolio analytics.
+Designed and implemented a custom investment governance application supporting strategic proposal submission, weighted evaluation, controlled governance decisions, role-based access, automated decision auditing, and portfolio analytics.
 
-The solution uses a defined **Draft → Submitted → Under Review → Approved / Deferred / Rejected** lifecycle, automated weighted scoring, a minimum approval score threshold, controlled requestor submission, governance validation, and interactive reporting.
+The solution incorporates a **Draft → Submitted → Under Review → Approved / Deferred / Rejected** lifecycle, automated weighted scoring, a minimum approval threshold, controlled submission, governance validation, and interactive reporting.
 
-**Skills demonstrated:** ServiceNow administration, custom tables and fields, Business Rules, server-side scripting, UI Actions, ACLs, role-based access control, reference fields, Strategic Priorities, governance workflow design, automated scoring, Platform Analytics, reporting, dashboard development, troubleshooting, and user acceptance testing.
+**Skills demonstrated:** Custom tables and fields, Business Rules, server-side scripting, UI Actions, Access Control Lists (ACLs), role-based access control, reference fields, governance workflow design, automated scoring, Platform Analytics, reporting, dashboard development, troubleshooting, and user acceptance testing.
 
-## Learning Log
+## Technical Competencies
 
-My [ServiceNow University Learning Log](learning-log/) documents my progress through ServiceNow Administration Fundamentals, including course concepts, scenarios, labs, and practical learning.
+- **Platform Administration:** ServiceNow configuration, user and role management, access controls, and application configuration.
+- **Scripting and Automation:** Business Rules, Client Scripts, UI Policies, UI Actions, and Flow Designer.
+- **IT Service Management:** Incident Management, Configuration Items, service workflows, and ITSM principles.
+- **Application Development:** Custom tables, reference fields, business logic, and application lifecycle configuration.
+- **Governance and Reporting:** Automated scoring, approval controls, auditability, dashboards, and Platform Analytics.
+- **Testing and Troubleshooting:** Functional testing, validation, debugging, and solution verification.
 
-## Current Focus
+## Professional Background
 
-* ServiceNow administration
-* IT Service Management
-* Business Rules and server-side scripting
-* Client-side scripting
-* Flow Designer and automation
-* ServiceNow Certified System Administrator preparation
+I am a Stock and Systems Administrator with an MSc in Logistics and Supply Chain Management and a BEng in Electrical and Electronic Engineering.
 
-## Background
+My professional experience spans enterprise systems administration, data analysis, operational reporting, and business process improvement. I am applying this experience to ServiceNow platform administration and IT Service Management through practical development projects.
 
-Stock and Systems Administrator with an MSc in Logistics and Supply Chain Management, developing practical ServiceNow and ITSM skills through structured learning and hands-on PDI projects.
+I have completed ServiceNow Administration Fundamentals and am preparing for the ServiceNow Certified System Administrator (CSA) and ITIL 4 Foundation certifications.
+
+## Portfolio Objective
+
+To demonstrate practical ServiceNow administration, configuration, scripting, automation, and problem-solving capabilities through documented solutions that address realistic business requirements.
